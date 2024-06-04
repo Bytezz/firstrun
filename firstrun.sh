@@ -78,9 +78,6 @@ doinstallvscodium=$?
 if [ "$doenableflatpakhub" == 1 ]; then
     question "Install Signal (from Flathub)?"
     doinstallsignal=$?
-
-    question "Install 'Beyond All Reason'(from Flathub)?"
-    doinstallbeyondallreason=$?
 fi
 
 # Software non-FOSS
@@ -228,12 +225,6 @@ fi
 if [ "$doinstallsignal" == 1 ]; then
     echo "Installing signal..."
     flatpak install flathub org.signal.Signal
-fi
-
-# Install Beyond All Reason
-if [ "$doinstallbeyondallreason" == 1 ]; then
-    echo "Installing Beyond All Reason..."
-    flatpak install flathub info.beyondallreason.bar
 fi
 
 # Install Steam
