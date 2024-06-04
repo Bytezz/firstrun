@@ -21,6 +21,8 @@ GROUP=$USERNAME
 PERMISSION=755
 NEWHOSTNAME="$(< /sys/devices/virtual/dmi/id/product_name)"
 PRETTYHOSTNAME="$USERNAME's $NEWHOSTNAME"
+NEWHOSTNAME="${NEWHOSTNAME// /_}" # replace spaces with underscores
+NEWHOSTNAME="${NEWHOSTNAME,,}" # to lowercase
 
 # Device settings
 question "Change the hostname to \"$PRETTYHOSTNAME\"?"
