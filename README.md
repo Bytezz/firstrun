@@ -39,7 +39,7 @@ sudo ./firstrun.sh
 
 **Or, if you are lazy, here is a oneliner with curl**:  
 ```bash
-curl -s -o- https://raw.githubusercontent.com/mortalic/firstrun/main/fedora_first_run.sh | sudo bash
+curl -s -o- https://raw.githubusercontent.com/mortalic/firstrun/main/firstrun.sh | sudo bash
 ```
 
 ## Requirements
