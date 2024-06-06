@@ -28,8 +28,8 @@ It's designed to run after a fresh installation of Fedora, helping users quickly
 
 1. **Clone the repository or download the script**:  
 ```bash
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/mortalic/firstrun.git
+cd firstrun
 ```
 
 3. **Run the script**:  
