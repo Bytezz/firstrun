@@ -55,7 +55,7 @@ This script automates the setup of a Fedora system, including enabling repositor
 
 ## Customization
 
-The script uses several global variables (`LABEL`, `USER`, `GROUP`, `PERMISSION`) to configure system settings. You can modify these variables in the script to suit your specific requirements.
+The script uses several global variables (`USERNAME`, `GROUP`, `PERMISSION`, `NEWHOSTNAME`, `PRETTYHOSTNAME`, `DRIVELABEL`) to configure system settings. You can modify these variables in the script to suit your specific requirements.
 
 ## Contributions
 
