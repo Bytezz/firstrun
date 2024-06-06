@@ -13,16 +13,23 @@ question () {
 }
 
 # Global variables
-USERNAME=$USER
-if [ ! -z $SUDO_USER ]; then
-    USERNAME=$SUDO_USER
+if [ -z $USERNAME ]; then
+	USERNAME=$USER
+	if [ ! -z $SUDO_USER ]; then
+		USERNAME=$SUDO_USER
+	fi
 fi
-GROUP=$USERNAME
-PERMISSION=755
-NEWHOSTNAME="$(< /sys/devices/virtual/dmi/id/product_name)"
-PRETTYHOSTNAME="$USERNAME's $NEWHOSTNAME"
-NEWHOSTNAME="${NEWHOSTNAME// /_}" # replace spaces with underscores
-NEWHOSTNAME="${NEWHOSTNAME,,}" # to lowercase
+GROUP=${GROUP-$USERNAME}
+PERMISSION=${PERMISSION-755}
+if [ -z $NEWHOSTNAME ]; then
+	NEWHOSTNAME="$(< /sys/devices/virtual/dmi/id/product_name)"
+	hostnamefromhardwarename=1
+fi
+PRETTYHOSTNAME=${PRETTYHOSTNAME-"$USERNAME's $NEWHOSTNAME"}
+if [ "$hostnamefromhardwarename" == 1 ]; then
+	NEWHOSTNAME="${NEWHOSTNAME// /_}" # replace spaces with underscores
+	NEWHOSTNAME="${NEWHOSTNAME,,}" # to lowercase
+fi
 
 # Device settings
 question "Change the hostname to \"$PRETTYHOSTNAME\"?"
@@ -31,7 +38,9 @@ dochangehostname=$?
 question "Do you want to setup a second drive?"
 dosetupseconddrive=$?
 if [ "$dosetupseconddrive" == 1 ]; then
-    read -p "Drive label: " -r DRIVELABEL
+	if [ -z $DRIVELABEL ]; then
+	    read -p "Drive label: " -r DRIVELABEL
+	fi
 fi
 
 # Drivers / repos
